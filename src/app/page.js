@@ -3,6 +3,7 @@ import Header from "@/_components/Header/Header";
 import Image from "next/image";
 import HeroSection from "@/_components/HeroSection/HeroSection";
 import Footer from "@/_components/Footer/Footer";
+import CustomCarousel from "@/_components/CustomCarousel/CustomCarousel";
 
 export default function Home() {
   return (
@@ -11,9 +12,10 @@ export default function Home() {
         <TopBanner />
         <Header />
       </header>
-      <section>
+      <section id="hero-section">
         <HeroSection />
       </section>
+
       <footer className="w-10/12 mx-auto my-6 md:my-10">
         <Footer />
       </footer>
