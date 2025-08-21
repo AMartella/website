@@ -5,7 +5,7 @@ import Medium from '../Text/Medium/Medium'
 
 function TopBanner() {
     return (
-        <div className='flex justify-between items-center px-10 py-1 md:px-20 md:py-1 bg-cyan-600 text-white'>
+        <div className='flex justify-between items-center px-10 py-1 md:px-20 md:py-1 bg-gradient-to-r from-cyan-500 to-cyan-600 text-white'>
             <div className='flex justify-between md:justify-normal md:gap-4 w-full'>
                 {/* Mobile */}
                 <div className="flex w-full justify-between md:hidden">

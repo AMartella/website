@@ -5,9 +5,9 @@ import React from 'react'
 function Big({ text, link, className }) {
     return (
         <>{link ? <Link
-            className={cn("text-xl md:text-3xl", className)}
+            className={cn("text-xl md:text-3xl py-4", className)}
             href={link}>{text}</Link> :
-            <p className={cn("text-xl md:text-3xl", className)}>{text}</p>}</>
+            <p className={cn("text-xl md:text-3xl py-4", className)}>{text}</p>}</>
     )
 }
 
