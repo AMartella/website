@@ -5,9 +5,9 @@ import React from 'react'
 function Small({ text, link, className }) {
     return (
         <>{link ? <Link
-            className={cn("text-xs md:text-md", className)}
+            className={cn("text-xs md:text-md py-2", className)}
             href={link}>{text}</Link> :
-            <p className={cn("text-xs md:text-md", className)}>{text}</p>}</>
+            <p className={cn("text-xs md:text-md py-2", className)}>{text}</p>}</>
     )
 }
 
