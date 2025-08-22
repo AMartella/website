@@ -7,11 +7,11 @@ import Footer from "@/_components/Footer/Footer";
 export default function Home() {
   return (
     <>
+      <TopBanner />
       <header>
-        <TopBanner />
         <Header />
       </header>
-      <section>
+      <section className="h-dvh">
         <HeroSection />
       </section>
       <footer className="w-10/12 mx-auto my-6 md:my-10">

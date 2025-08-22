@@ -1,26 +1,37 @@
-import React from 'react'
+'use client'
+
+import { useState, useEffect } from 'react'
 import Logo from '../Logo/Logo'
 import Link from 'next/link'
-import { Home, Info, ListTree } from 'lucide-react'
 import MobileMenu from '../MobileMenu/MobileMenu'
+import Big from '../Text/Big/Big'
+import Medium from '../Text/Medium/Medium'
 
 function Header() {
+    const [headerFixed, setHeaderFixed] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setHeaderFixed(window.scrollY > 100);
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    })
+
     return (
-        <div className='flex justify-between items-center bg-cyan-900 px-4 py-2 md:px-12 md:py-4 text-white'>
-            <Logo />
-            <div className='hidden md:flex items-center gap-5 font-bold md:text-lg'>
-                <Link href="/" >
-                    <span>HOME</span>
-                </Link>
-                <Link href="/about">
-                    <span>CHI SIAMO</span>
-                </Link>
-                <Link href="/contact">
-                    <span>SERVIZI</span>
-                </Link>
-            </div>
-            <div className='md:hidden'>
-                <MobileMenu />
+        <div className={`
+            ${headerFixed ? "fixed top-0 left-0 w-full z-50 md:px-20 shadow-amber-600 shadow-sm md:shadow-md bg-white/10 animate-fade-in text-cyan-600" :
+                "relative bg-cyan-900 text-white"}`}>
+            <div className='flex justify-between items-center px-4 py-2 md:px-12 md:py-4'>
+                <Logo />
+                <div className='hidden md:flex items-center gap-5 font-bold md:text-lg'>
+                    <Medium text="Home" link={"/"} />
+                    <Medium text="Chi siamo" link={"/about"} />
+                    <Medium text="Servizi" link={"/services"} />
+                </div>
+                <div className='md:hidden'>
+                    <MobileMenu />
+                </div>
             </div>
         </div>
     )
