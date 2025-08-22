@@ -29,7 +29,7 @@ function MobileMenu() {
                     </div>
                     <hr className='mt-2 mx-1' />
                 </SheetHeader>
-                <nav className="flex flex-col gap-6 px-6 py-3 text-lg font-medium">
+                <nav className="flex flex-col gap-6 px-6 py-3 text-lg font-medium text-cyan-600">
                     <Big text="Home" link={"/"} />
                     <Big text="Chi siamo" link={"/about"} />
                     <Big text="Servizi" link={"/services"} />

@@ -10,8 +10,8 @@ import Big from "@/_components/Text/Big/Big";
 export default function Home() {
   return (
     <>
+      <TopBanner />
       <header>
-        <TopBanner />
         <Header />
       </header>
       <section id="hero-section">
