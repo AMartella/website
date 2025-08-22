@@ -31,11 +31,11 @@ function HeroSection() {
                             </Button>
 
                         </div>
-                        <div className='w-full md:w-1/3 mx-auto md:ml-auto md:mr-40'>
+                        <div className='w-full md:w-1/3 mx-auto md:ml-auto md:mr-30'>
                             <Image src="/img-1.png" alt="hero" width={1000} height={1000}
                                 className='rounded-md shadow-amber-700 shadow-lg opacity-85' />
                         </div>
-                        <div className="hidden md:block absolute bottom-5 right-60">
+                        <div className="hidden md:block absolute bottom-5 right-50">
                             <div className='w-1/3 mx-auto md:ml-auto md:mr-40'>
                                 <Image src="/img-1.png" alt="hero" width={1000} height={1000}
                                     className='rounded-md shadow-amber-700 shadow-md animate-fade-in-fast' />
@@ -45,7 +45,7 @@ function HeroSection() {
                     </div>
                 </div>
                 <div className='relative hidden md:block animate-fade-in-slow'>
-                    <div className='flex justify-center gap-4 md:gap-6 mt-6'>
+                    <div className='flex justify-center gap-4 md:gap-6 py-10'>
                         <Card text={"AI Automation"} bgColor={"bg-cyan-500/35 backdrop-blur-[1px]"}
                             icon={"/ai.svg"} link="/services/ai" />
                         <Card text={"Sviluppo Web"} bgColor={"bg-cyan-500/35 backdrop-blur-[1px]"}
@@ -58,7 +58,7 @@ function HeroSection() {
                             icon={"/data-solution.svg"} link="/services/data-solution" />
                     </div>
                 </div>
-            </div>
+            </div >
         </>
     )
 }
