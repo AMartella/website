@@ -7,18 +7,61 @@ import { ArrowRight } from 'lucide-react'
 import Medium from '../Text/Medium/Medium'
 import Image from 'next/image'
 import Card from '../Card/Card'
+import { Droplet } from 'lucide-react'
 
 function HeroSection() {
     return (
         <>
             <div className='relative px-10 md:px-20'>
-                <div className='absolute top-0 left-0 right-0 bottom-0 bg-gradient-to-br from-cyan-800 to-cyan-900 text-white flex border-t-2 border-t-gray-500 z-0'>
-                    <div className='w-1/6 border-r border-r-gray-500'></div>
-                    <div className='w-1/4 border-r border-r-gray-500'></div>
-                    <div className='w-1/4 border-r border-r-gray-500'></div>
-                    <div className='w-1/4 border-r border-r-gray-500'></div>
-                    <div className='hidden md:block w-1/4 border-r border-r-gray-500'></div>
-                    <div className='w-1/12'></div>
+                <div className='absolute top-0 left-0 right-0 bottom-0 bg-gradient-to-br from-cyan-800 to-cyan-900 text-white flex border-t-2 border-t-gray-600 z-0'>
+                    <div className='absolute w-0.5 top-0 left-1/11 md:left-1/12 h-full bg-gray-500'>
+                        <span className="absolute h-3/12 animate-run">
+                            <div className='w-0.5 h-2 bg-amber-300' />
+                        </span>
+                        <span className="absolute h-7/12 animate-run">
+                            <div className='w-0.5 h-2 bg-amber-300' />
+                        </span>
+                    </div>
+                    <div className='absolute w-0.5 top-0 left-4/11 md:left-3/12 h-full bg-gray-500'>
+                        <span className="absolute h-8/12 animate-run">
+                            <div className='w-0.5 h-2 bg-amber-300' />
+                        </span>
+                        <span className="absolute h-11/12 animate-run">
+                            <div className='w-0.5 h-2 bg-amber-300' />
+                        </span>
+                    </div>
+                    <div className='absolute w-0.5 top-0 left-7/11 md:left-5/12 h-full bg-gray-500'>
+                        <span className="absolute h-5/12 animate-run">
+                            <div className='w-0.5 h-2 bg-amber-300' />
+                        </span>
+                        <span className="absolute h-8/12 animate-run">
+                            <div className='w-0.5 h-2 bg-amber-300' />
+                        </span>
+                    </div>
+                    <div className='absolute w-0.5 top-0 left-10/11 md:left-7/12 h-full bg-gray-500'>
+                        <span className="absolute h-4/12 animate-run">
+                            <div className='w-0.5 h-2 bg-amber-300' />
+                        </span>
+                        <span className="absolute h-7/12 animate-run">
+                            <div className='w-0.5 h-2 bg-amber-300' />
+                        </span>
+                    </div>
+                    <div className='absolute hidden md:block w-0.5 top-0 md:left-9/12 h-full bg-gray-500'>
+                        <span className="absolute h-8/12 animate-run">
+                            <div className='w-0.5 h-2 bg-amber-300' />
+                        </span>
+                        <span className="absolute h-11/12 animate-run">
+                            <div className='w-0.5 h-2 bg-amber-300' />
+                        </span>
+                    </div>
+                    <div className='absolute hidden md:block w-0.5 top-0 md:left-11/12 h-full bg-gray-500'>
+                        <span className="absolute h-7/12 animate-run">
+                            <div className='w-0.5 h-2 bg-amber-300' />
+                        </span>
+                        <span className="absolute h-9/12 animate-run">
+                            <div className='w-0.5 h-2 bg-amber-300' />
+                        </span>
+                    </div>
                 </div>
                 <div className='relative py-10 md:py-16 animate-fade-in-slow'>
                     <div className='md:flex items-center'>
