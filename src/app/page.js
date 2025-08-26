@@ -20,6 +20,9 @@ export default function Home() {
       <section id="custom-carousel">
         <CustomCarousel />
       </section>
+      <section id="hero-section">
+        <HeroSection />
+      </section>
       <footer className="w-10/12 mx-auto my-6 md:my-10">
         <Footer />
       </footer>

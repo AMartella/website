@@ -5,8 +5,8 @@
 
 @theme inline {
   --animate-fade-in: fade-in 0.4s both;
-  --animate-run: run 7s infinite both ease-out;
-  --animate-run-header: run-header 15s infinite forwards ease-out;
+  --animate-run: run 10s infinite both ease-out;
+  --animate-run-header: run-header 7s infinite both ease-out;
 
   @keyframes fade-in {
     0% {
@@ -14,42 +14,42 @@
     }
 
     100% {
-      opacity: 1;
+      opacity: 0.65;
     }
   }
 
   @keyframes run-header {
     0% {
-      transform: translateX(-1%);
-      opacity: 0;
+      transform: translateX(-110%);
+      opacity: 0.9;
     }
 
-    10% {
-      opacity: 1;
-    }
-
-    90% {
-      opacity: 0.6;
+    45% {
+      opacity: 0.70;
     }
 
     100% {
-      transform: translateX(110%);
-      opacity: 0;
+      transform: translateX(105%);
+      opacity: 0.10;
     }
   }
 
   @keyframes run {
     0% {
       transform: translateY(-1%);
-      opacity: 0;
+      opacity: 0.45;
     }
 
-    10% {
+    30% {
       opacity: 1;
     }
 
+    60% {
+      opacity: 0.8;
+    }
+
     90% {
-      opacity: 0.6;
+      opacity: 0.4;
     }
 
     100% {

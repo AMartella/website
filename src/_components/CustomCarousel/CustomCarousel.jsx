@@ -1,9 +1,13 @@
-'use client'
+"use client";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-import { Card, CardHeader, CardContent, CardTitle } from "@/components/ui/card";
-import { motion } from "framer-motion";
 import Medium from "../Text/Medium/Medium";
-import BigXL from "../Text/BigXL/BigXL";
+import Big from "../Text/Big/Big";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const steps = [
     {
@@ -49,17 +53,102 @@ const steps = [
 ];
 
 function CustomCarousel() {
+    const containerRef = useRef(null);
+    const sectionsRef = useRef([]);
+    const progressRef = useRef(null);
+
+    useEffect(() => {
+        const fixedEl = document.querySelector(".progress-bar-container");
+        // Animazioni per ogni sezione
+        sectionsRef.current.forEach((el, i) => {
+            if (!el) return;
+
+            // Pin fullscreen della sezione
+            ScrollTrigger.create({
+                trigger: el,
+                start: "top top",
+                end: "+=100%",
+                pin: true,
+                pinSpacing: i === steps.length - 1, // solo l'ultima lascia spazio per scroll finale
+            });
+
+            // Animazione card
+            gsap.fromTo(
+                el.querySelector(".card-anim"),
+                { autoAlpha: 0, y: 50 },
+                {
+                    autoAlpha: 1,
+                    y: 0,
+                    duration: 1,
+                    scrollTrigger: {
+                        trigger: el,
+                        start: "top 90%",
+                        toggleActions: "play none none reverse",
+                    },
+                }
+            );
+        });
+
+        ScrollTrigger.create({
+            trigger: containerRef.current,
+            start: "top top",
+            end: "bottom bottom",
+            onEnter: () => gsap.to(fixedEl, { autoAlpha: 1, duration: 0.3 }),
+            onLeave: () => gsap.to(fixedEl, { autoAlpha: 0, duration: 0.3 }),
+            onEnterBack: () => gsap.to(fixedEl, { autoAlpha: 1, duration: 0.3 }),
+            onLeaveBack: () => gsap.to(fixedEl, { autoAlpha: 0, duration: 0.3 }),
+        });
+
+        // Barra di progresso legata solo al container
+        gsap.fromTo(
+            progressRef.current,
+            {
+                width: "0%",
+                height: "4px",
+            },
+            {
+                width: "100%",
+                height: "4px",
+                ease: "none",
+                scrollTrigger: {
+                    trigger: containerRef.current,
+                    start: "top top",
+                    end: "bottom bottom",
+                    scrub: true,
+                },
+            }
+        );
+
+        return () => {
+            ScrollTrigger.getAll().forEach((t) => t.kill());
+            gsap.killTweensOf("*");
+        };
+    }, []);
+
     return (
-        <div className="relative h-dvh w-full overflow-y-scroll snap-y snap-mandatory scrollbar-hide">
+        <div ref={containerRef} className="relative w-full scrollbar-hide">
+            {/* Progress bar con indicatori */}
+            <div className="opacity-0 fixed top-10 left-3/12 h-1 w-1/2 bg-gray-300 z-50 progress-bar-container">
+                <div ref={progressRef} className="absolute top-0 left-0 w-0 h-2 bg-red-500" />
+                {steps.map((_, i) => (
+                    <div
+                        key={i}
+                        className="absolute top-[-4px] -translate-x-1/2 w-3 h-3 rounded-full border-2 border-gray-400 bg-white"
+                        style={{ left: `${(i / (steps.length)) * 100}%` }}
+                    />
+                ))}
+                <div className="absolute top-[-4px] -translate-x-1/2 w-3 h-3 rounded-full border-2 border-gray-400 bg-white"
+                    style={{ left: "100%" }} />
+            </div>
+
+            {/* Sezioni */}
             {steps.map((step, i) => (
-                <section key={i}
-                    className={`h-dvh w-full flex flex-col gap-8 items-center justify-center snap-start ${step.bg}`} >
-                    <BigXL text="Sceglierci significa" className={"font-bold text-center"} />
-                    <motion.div
-                        initial={{ opacity: 0, y: 40 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
-                        viewport={{ once: true }} >
+                <section
+                    key={i}
+                    ref={(el) => (sectionsRef.current[i] = el)}
+                    className={`h-screen w-full flex items-center justify-center ${step.bg}`}
+                >
+                    <div className="card-anim">
                         <Card className="shadow-xl rounded-2xl">
                             <CardHeader>
                                 <CardTitle className="text-3xl font-bold text-center">
@@ -72,9 +161,17 @@ function CustomCarousel() {
                                 ))}
                             </CardContent>
                         </Card>
-                    </motion.div>
+
+                    </div>
                 </section>
             ))}
+
+            <section className="min-h-screen w-full flex items-center justify-center bg-white">
+                <div className="max-w-2xl text-center p-8">
+                    <Big text={"Collaborare con noi significa "} className="text-center p-0" />
+                    <Big text={"scegliere di essere supportati, sempre!"} className="text-center p-0" />
+                </div>
+            </section>
         </div>
     );
 }

@@ -8,19 +8,20 @@ import Medium from '../Text/Medium/Medium'
 import { cn } from '@/lib/utils'
 import Image from 'next/image'
 import Link from 'next/link'
+import Small from '../Text/Small/Small'
 
 function Card({ text, bgColor, icon, link }) {
     return (
         <Link href={link}>
             <CardPrimitive className={
-                cn("items-center justify-end my-6 transform transition-transform duration-500 hover:-translate-y-3 cursor-pointer",
-                    "w-60 h-60",
+                cn("items-center justify-center transform transition-transform duration-500 hover:-translate-y-3 cursor-pointer",
+                    "w-40 h-40",
                     bgColor)}>
                 <CardContent>
-                    <Image src={icon} alt="hero" width={70} height={70} />
+                    <Image src={icon} alt="hero" width={35} height={35} />
                 </CardContent>
                 <CardFooter>
-                    <Medium text={text} className={"font-medium text-amber-300"} />
+                    <Small text={text} className={"font-medium text-amber-300 text-sm"} />
                 </CardFooter>
             </CardPrimitive>
         </Link>

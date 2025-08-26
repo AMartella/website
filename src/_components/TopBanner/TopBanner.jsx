@@ -5,7 +5,7 @@ import Medium from '../Text/Medium/Medium'
 
 function TopBanner() {
     return (
-        <div className='flex justify-between items-center px-10 py-1 md:px-20 md:py-1 bg-gradient-to-r from-cyan-500 to-cyan-600 text-white'>
+        <div className='flex justify-between items-center px-10 py-1 md:px-20 md:py-2 bg-linear-to-r/decreasing from-cyan-700 to-cyan-600 text-white'>
             <div className='flex justify-between md:justify-normal md:gap-4 w-full'>
                 {/* Mobile */}
                 <div className="flex w-full justify-between md:hidden">
@@ -15,8 +15,8 @@ function TopBanner() {
 
                 {/* Desktop */}
                 <div className="hidden md:flex w-full md:gap-4">
-                    <Medium text="info@softinnovasolutions.it" link="mailto:info@softinnovasolutions.it" />
-                    <Medium text="+39 333 333 3333" link="tel:+393333333333" />
+                    <Medium text="info@softinnovasolutions.it" link="mailto:info@softinnovasolutions.it" className={"py-0"} />
+                    <Medium text="+39 333 333 3333" link="tel:+393333333333" className={"py-0"} />
                 </div>
             </div>
             <div className='hidden md:flex gap-2 md:gap-4'>
