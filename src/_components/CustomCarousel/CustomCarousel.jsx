@@ -128,8 +128,8 @@ function CustomCarousel() {
     return (
         <div ref={containerRef} className="relative w-full scrollbar-hide">
             {/* Progress bar con indicatori */}
-            <div className="opacity-0 fixed top-10 left-3/12 h-1 w-1/2 bg-gray-300 z-50 progress-bar-container">
-                <div ref={progressRef} className="absolute top-0 left-0 w-0 h-2 bg-red-500" />
+            <div className="opacity-0 fixed top-10 left-3/12 h-1 w-1/2 bg-linear-to-r from-cyan-900/60 to-amber-500/30 z-50 progress-bar-container">
+                <div ref={progressRef} className="absolute top-0 left-0 w-0 h-2 bg-linear-to-r from-cyan-900/80 to-amber-500/60" />
                 {steps.map((_, i) => (
                     <div
                         key={i}

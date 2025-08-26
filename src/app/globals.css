@@ -5,8 +5,19 @@
 
 @theme inline {
   --animate-fade-in: fade-in 0.4s both;
+  --animate-fade-in-word: fade-in-word 0.2s both;
   --animate-run: run 10s infinite both ease-out;
   --animate-run-header: run-header 7s infinite both ease-out;
+
+  @keyframes fade-in-word {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
 
   @keyframes fade-in {
     0% {
