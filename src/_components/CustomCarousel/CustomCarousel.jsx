@@ -6,12 +6,13 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 import Medium from "../Text/Medium/Medium";
 import Big from "../Text/Big/Big";
+import BigXL from "../Text/BigXL/BigXL";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const steps = [
     {
-        title: "Ascolto",
+        title: "Noi ti ascoltiamo",
         descriptions: [
             "Raccontaci cosa vuoi creare",
             "Mostraci cosa hai in mente di grandioso",
@@ -21,7 +22,7 @@ const steps = [
         bg: "bg-slate-100",
     },
     {
-        title: "Supporto",
+        title: "Ti supportiamo",
         descriptions: [
             "Studiamo insieme il contesto",
             "Definiamo le esigenze",
@@ -31,7 +32,7 @@ const steps = [
         bg: "bg-amber-100",
     },
     {
-        title: "Accompagnamento",
+        title: "Ti accompagniamo",
         descriptions: [
             "Disegniamo la tua idea",
             "La progettiamo con stile e funzionalità",
@@ -41,7 +42,7 @@ const steps = [
         bg: "bg-rose-200",
     },
     {
-        title: "Guida",
+        title: "Ti guidiamo",
         descriptions: [
             "Ti aiutiamo a ottimizzare il tuo prodotto",
             "Analizziamo i risultati",
@@ -128,8 +129,8 @@ function CustomCarousel() {
     return (
         <div ref={containerRef} className="relative w-full scrollbar-hide">
             {/* Progress bar con indicatori */}
-            <div className="opacity-0 fixed top-10 left-3/12 h-1 w-1/2 bg-linear-to-r from-cyan-900/60 to-amber-500/30 z-50 progress-bar-container">
-                <div ref={progressRef} className="absolute top-0 left-0 w-0 h-2 bg-linear-to-r from-cyan-900/80 to-amber-500/60" />
+            <div className="opacity-0 fixed top-10 left-3/12 h-1 w-1/2 bg-linear-to-r from-cyan-900/60 to-amber-500/10 z-50 progress-bar-container">
+                <div ref={progressRef} className="absolute top-0 left-0 w-0 h-2 bg-linear-to-r from-cyan-900/80 to-amber-500/80" />
                 {steps.map((_, i) => (
                     <div
                         key={i}
@@ -168,8 +169,8 @@ function CustomCarousel() {
 
             <section className="min-h-screen w-full flex items-center justify-center bg-white">
                 <div className="max-w-2xl text-center p-8">
-                    <Big text={"Collaborare con noi significa "} className="text-center p-0" />
-                    <Big text={"scegliere di essere supportati, sempre!"} className="text-center p-0" />
+                    <BigXL text={"Collaborare con noi significa "} className="text-center" />
+                    <BigXL text={"scegliere di essere supportati, sempre!"} className="text-center" />
                 </div>
             </section>
         </div>
