@@ -3,7 +3,7 @@ import BigXL from '../Text/BigXL/BigXL'
 
 function Banner() {
     return (
-        <div className="bg-slate-100 py-6 px-6 md:px-20">
+        <div className="bg-linear-to-b from-white to-slate-200 py-6 px-6 md:px-20">
             <BigXL text={`
                     Ogni progetto nasce da un’idea.
                     Ma un’idea, da sola, non basta.
