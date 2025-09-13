@@ -16,9 +16,10 @@ function Header() {
     useEffect(() => {
         const handleScroll = () => {
             if (isMobile) {
-                setHeaderFixed(window.scrollY > 200);
+                setHeaderFixed(window.scrollY > 5200);
+                return;
             }
-            setHeaderFixed(window.scrollY > 4500);
+            setHeaderFixed(window.scrollY > 6700);
         };
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
@@ -26,11 +27,11 @@ function Header() {
 
     return (
         <div className={`
-            ${headerFixed ? "fixed top-0 left-0 w-full z-50 px-10 md:px-20 shadow-amber-600 shadow-sm md:shadow-md bg-white/95 animate-fade-in text-cyan-600" :
+            ${headerFixed ? "fixed top-0 left-0 w-full z-50 px-10 md:px-20 shadow-cyan-600 shadow-md md:shadow-lg bg-black animate-fade-in-header text-cyan-600" :
                 "relative bg-cyan-900 text-white"}`}>
             {headerFixed && <div className='absolute bottom-0 left-0 w-full'>
                 <span className='absolute w-full animate-run-header'>
-                    <div className='w-25 h-1 bg-linear-to-l from-amber-500/70 to-amber-500/20' />
+                    <div className='w-20 md:w-70 h-1 bg-linear-to-l from-white to-cyan-600/30' />
                 </span>
             </div>}
             <div className={cn('flex justify-between items-center py-2', !headerFixed && 'px-4 md:px-12')}>

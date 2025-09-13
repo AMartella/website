@@ -5,9 +5,10 @@
 
 @theme inline {
   --animate-fade-in: fade-in 0.4s both;
+  --animate-fade-in-header: fade-in-header 0.4s both;
   --animate-fade-in-word: fade-in-word 0.2s both;
-  --animate-run: run 10s infinite both ease-out;
-  --animate-run-header: run-header 7s infinite both ease-out;
+  --animate-run: run 3s infinite both ease-out;
+  --animate-run-header: run-header 8s infinite both ease-out;
 
   @keyframes fade-in-word {
     0% {
@@ -29,9 +30,19 @@
     }
   }
 
+  @keyframes fade-in-header {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 0.75;
+    }
+  }
+
   @keyframes run-header {
     0% {
-      transform: translateX(-110%);
+      transform: translate(-20%, 1px);
       opacity: 0.9;
     }
 
@@ -40,14 +51,14 @@
     }
 
     100% {
-      transform: translateX(105%);
+      transform: translate(100%, 1px);
       opacity: 0.10;
     }
   }
 
   @keyframes run {
     0% {
-      transform: translateY(-1%);
+      transform: translateY(-100%);
       opacity: 0.45;
     }
 

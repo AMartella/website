@@ -14,44 +14,29 @@ function HeroSection() {
         <>
             <div className='relative px-6 md:px-20'>
                 <div className='absolute top-0 left-0 right-0 bottom-0 text-white flex border-t-2 border-t-gray-600 bg-linear-to-b from-cyan-900 to-orange-900 z-0'>
-                    <div className='absolute w-0.5 top-0 left-2/12 md:left-1/10 h-full bg-gray-500'>
-                        <span className="absolute h-3/12 animate-run">
-                            <div className='w-0.5 h-2 bg-linear-to-t from-amber-500/90 to-amber-500/20' />
+                    <div className='absolute w-0.5 top-0 left-2/12 md:left-1/10 h-full bg-gray-500/10 overflow-hidden'>
+                        <span className="absolute h-full animate-run">
+                            <div className='w-0.5 h-70 bg-linear-to-t from-amber-500/50 to-amber-500/10' />
                         </span>
+                    </div>
+                    <div className='absolute w-0.5 top-0 left-5/12 md:left-3/10 h-full bg-gray-500/10 overflow-hidden'>
+                        <span className="absolute h-9/12 animate-run">
+                            <div className='w-0.5 h-70 bg-linear-to-t from-amber-500/50 to-amber-500/10' />
+                        </span>
+                    </div>
+                    <div className='absolute w-0.5 top-0 left-8/12 md:left-5/10 h-full bg-gray-500/10 overflow-hidden'>
                         <span className="absolute h-7/12 animate-run">
-                            <div className='w-0.5 h-2 bg-linear-to-t from-amber-500/90 to-amber-500/20' />
+                            <div className='w-0.5 h-70 bg-linear-to-t from-amber-500/50 to-amber-500/10' />
                         </span>
                     </div>
-                    <div className='absolute w-0.5 top-0 left-5/12 md:left-3/10 h-full bg-gray-500'>
-                        <span className="absolute h-8/12 animate-run">
-                            <div className='w-0.5 h-2 bg-linear-to-t from-amber-500/90 to-amber-500/20' />
-                        </span>
-                        <span className="absolute h-11/12 animate-run">
-                            <div className='w-0.5 h-2 bg-linear-to-t from-amber-500/90 to-amber-500/20' />
+                    <div className='absolute w-0.5 top-0 left-11/12 md:left-7/10 h-full bg-gray-500/10 overflow-hidden'>
+                        <span className="absolute h-full animate-run">
+                            <div className='w-0.5 h-70 bg-linear-to-t from-amber-500/50 to-amber-500/10' />
                         </span>
                     </div>
-                    <div className='absolute w-0.5 top-0 left-8/12 md:left-5/10 h-full bg-gray-500'>
-                        <span className="absolute h-5/12 animate-run">
-                            <div className='w-0.5 h-2 bg-linear-to-t from-amber-500/90 to-amber-500/20' />
-                        </span>
-                        <span className="absolute h-8/12 animate-run">
-                            <div className='w-0.5 h-2 bg-linear-to-t from-amber-500/90 to-amber-500/20' />
-                        </span>
-                    </div>
-                    <div className='absolute w-0.5 top-0 left-11/12 md:left-7/10 h-full bg-gray-500'>
-                        <span className="absolute h-4/12 animate-run">
-                            <div className='w-0.5 h-2 bg-amber-300' />
-                        </span>
-                        <span className="absolute h-7/12 animate-run">
-                            <div className='w-0.5 h-2 bg-amber-300' />
-                        </span>
-                    </div>
-                    <div className='absolute hidden md:block w-0.5 top-0 md:left-9/10 h-full bg-gray-500'>
-                        <span className="absolute h-8/12 animate-run">
-                            <div className='w-0.5 h-2 bg-amber-300' />
-                        </span>
-                        <span className="absolute h-11/12 animate-run">
-                            <div className='w-0.5 h-2 bg-amber-300' />
+                    <div className='absolute hidden md:block w-0.5 top-0 md:left-9/10 h-full bg-gray-500/10 overflow-hidden'>
+                        <span className="absolute h-9/12 animate-run">
+                            <div className='w-0.5 h-70 bg-linear-to-t from-amber-500/50 to-amber-500/10' />
                         </span>
                     </div>
                 </div>
