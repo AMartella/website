@@ -22,21 +22,17 @@ export default function Home() {
         <Banner />
         <CustomCarousel />
       </section>
-<<<<<<< HEAD
-  <section id="stack-section" className="relative [background-image:radial-gradient(circle,#0000003b_1px,#f1f5f9_1px)] [background-size:20px_20px] py-5 md:py-18 z-10">
-    <SnakeBackground speed={1} length={250} color_1="rgba(255, 200, 0, 0.4)" color_2="rgba(255, 50, 0, 0)" coords={[0, 0]} />
-    <SnakeBackground speed={1} length={350} color_1="rgba(0, 211, 243, 0.4)" color_2="rgba(0, 60, 243, 0)" coords={[1500, 300]} />
-=======
-      <section id="stack-section" className="[background-image:radial-gradient(circle,#000_1px,#f1f5f9_1px)] [background-size:20px_20px] py-5 md:py-18">
->>>>>>> develop
-      <StackSection />
-    </section>
-    <section id="image-comparison-section" className="py-5">
-      <ImageComparison />
-    </section>
-    <footer className="w-10/12 mx-auto my-6 md:my-10">
-      <Footer />
-    </footer>
-  </>
+      <section id="stack-section" className="relative [background-image:radial-gradient(circle,#0000003b_1px,#f1f5f9_1px)] [background-size:20px_20px] py-5 md:py-18 z-10">
+        <SnakeBackground speed={1} length={250} color_1="rgba(255, 200, 0, 0.4)" color_2="rgba(255, 50, 0, 0)" coords={[0, 0]} />
+        <SnakeBackground speed={1} length={350} color_1="rgba(0, 211, 243, 0.4)" color_2="rgba(0, 60, 243, 0)" coords={[1500, 300]} />
+        <StackSection />
+      </section>
+      <section id="image-comparison-section" className="py-5">
+        <ImageComparison />
+      </section>
+      <footer className="w-10/12 mx-auto my-6 md:my-10">
+        <Footer />
+      </footer>
+    </>
   );
 }
