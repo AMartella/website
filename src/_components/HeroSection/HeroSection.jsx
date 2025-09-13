@@ -59,7 +59,7 @@ function HeroSection() {
                         </div>
                     </div>
                     <div className='relative hidden md:block animate-fade-in-slow'>
-                        <div className='flex justify-center gap-4 md:gap-6 pt-10'>
+                        <div className='flex justify-center gap-12 mt-10 py-12'>
                             <Card text={"AI Automation"} bgColor={"bg-cyan-900/50 backdrop-blur-[1px]"}
                                 icon={"/ai.svg"} link="/services/ai" />
                             <Card text={"Sviluppo Web"} bgColor={"bg-cyan-900/50 backdrop-blur-[1px]"}
