@@ -8,6 +8,7 @@ import Medium from '../Text/Medium/Medium'
 import Image from 'next/image'
 import Card from '../Card/Card'
 import { Droplet } from 'lucide-react'
+import BlackHole from './Blackhole'
 
 function HeroSection() {
     return (
@@ -53,8 +54,9 @@ function HeroSection() {
 
                             </div>
                             <div className='w-full md:w-1/3 mx-auto my-6 md:ml-auto md:mr-30'>
-                                <Image src="/img-1.png" alt="hero" width={1000} height={1000}
-                                    className='rounded-md shadow-amber-700 shadow-lg opacity-85' />
+                                {/* <BlackHole /> */}
+                                {/* <Image src="/img-1.png" alt="hero" width={1000} height={1000}
+                                    className='rounded-md shadow-amber-700 shadow-lg opacity-85' /> */}
                             </div>
                         </div>
                     </div>

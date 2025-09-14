@@ -7,6 +7,7 @@ import StackSection from "@/_components/StackSection/StackSection";
 import SnakeBackground from "@/_components/StackSection/SnakeBackground";
 import ImageComparison from "@/_components/ImageComparison/ImageComparison";
 import Banner from "@/_components/Banner/Banner";
+import BlackHole from "@/_components/HeroSection/Blackhole";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
         <Header />
       </header>
       <section id="hero-section">
+        <BlackHole />
         <HeroSection />
       </section>
       <section id="custom-carousel">
@@ -23,8 +25,19 @@ export default function Home() {
         <CustomCarousel />
       </section>
       <section id="stack-section" className="relative [background-image:radial-gradient(circle,#0000003b_1px,#f1f5f9_1px)] [background-size:20px_20px] py-5 md:py-18 z-10">
-        <SnakeBackground speed={1} length={250} color_1="rgba(255, 200, 0, 0.4)" color_2="rgba(255, 50, 0, 0)" coords={[0, 0]} />
-        <SnakeBackground speed={1} length={350} color_1="rgba(0, 211, 243, 0.4)" color_2="rgba(0, 60, 243, 0)" coords={[1500, 300]} />
+        <SnakeBackground
+          speed={1}
+          length={400}
+          color_1="rgba(255, 200, 0, 0.4)"
+          color_2="rgba(255, 50, 0, 0)"
+          initalDirection={{ x: 1, y: 0 }} />
+        <SnakeBackground
+          speed={1}
+          length={400}
+          color_1="rgba(0, 211, 243, 0.4)"
+          color_2="rgba(0, 60, 243, 0)"
+          position={"center-center"}
+          initalDirection={{ x: -1, y: 0 }} />
         <StackSection />
       </section>
       <section id="image-comparison-section" className="py-5">

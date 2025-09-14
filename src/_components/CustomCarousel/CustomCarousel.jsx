@@ -60,6 +60,7 @@ function CustomCarousel() {
 
     useEffect(() => {
         const fixedEl = document.querySelector(".progress-bar-container");
+
         // Animazioni per ogni sezione
         sectionsRef.current.forEach((el, i) => {
             if (!el) return;
@@ -105,11 +106,9 @@ function CustomCarousel() {
             progressRef.current,
             {
                 width: "0%",
-                height: "4px",
             },
             {
                 width: "100%",
-                height: "4px",
                 ease: "none",
                 scrollTrigger: {
                     trigger: containerRef.current,
@@ -129,16 +128,16 @@ function CustomCarousel() {
     return (
         <div ref={containerRef} className="relative w-full scrollbar-hide">
             {/* Progress bar con indicatori */}
-            <div className="opacity-0 fixed top-10 left-3/12 h-1 w-1/2 bg-linear-to-r from-cyan-900/60 to-amber-500/10 z-50 progress-bar-container">
-                <div ref={progressRef} className="absolute top-0 left-0 w-0 h-2 bg-linear-to-r from-cyan-900/80 to-amber-500/80" />
+            <div className="opacity-0 fixed top-10 left-3/12 h-2 w-1/2 bg-gray-200 z-50 progress-bar-container">
+                <div ref={progressRef} className="absolute top-0 left-0 w-0 h-2 bg-linear-to-r from-cyan-600/80 to-amber-500" />
                 {steps.map((_, i) => (
                     <div
                         key={i}
-                        className="absolute top-[-4px] -translate-x-1/2 w-3 h-3 rounded-full border-2 border-gray-400 bg-white"
+                        className="absolute top-[-4px] -translate-x-1/2 w-4 h-4 rounded-full border-2 border-gray-400 bg-white dots"
                         style={{ left: `${(i / (steps.length)) * 100}%` }}
                     />
                 ))}
-                <div className="absolute top-[-4px] -translate-x-1/2 w-3 h-3 rounded-full border-2 border-gray-400 bg-white"
+                <div className="absolute top-[-4px] -translate-x-1/2 w-4 h-4 rounded-full border-2 border-gray-400 bg-white dots"
                     style={{ left: "100%" }} />
             </div>
 

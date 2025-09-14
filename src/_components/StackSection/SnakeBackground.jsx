@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
-function SnakeBackground({ speed = 3, length = 100, color_1 = "#000", color_2 = "#fff", coords = [] }) {
+function SnakeBackground({ speed = 3, length = 100, color_1 = "#000", color_2 = "#fff", initalDirection = { x: 1, y: 0 } }) {
     const canvasRef = useRef(null);
 
     useEffect(() => {
@@ -10,40 +10,46 @@ function SnakeBackground({ speed = 3, length = 100, color_1 = "#000", color_2 = 
         const ctx = canvas.getContext("2d");
         const sectionHeight = document.querySelector('#stack-section').offsetHeight;
         canvas.width = window.innerWidth;
-        canvas.height = sectionHeight - 150;
+        canvas.height = sectionHeight ? sectionHeight - 150 : window.innerHeight;
+        const margin = 50;
 
-        let headPos = { x: (canvas.width - coords[0]) / 2, y: (canvas.height - coords[1]) / 2 };
-        let direction = { x: 1, y: 0 };
+        let headPos = { x: (canvas.width - margin) / 2, y: (canvas.height - margin) / 2 };
+        let direction = initalDirection;
         let snake = [{ ...headPos }];
-
+        const dirs = [
+            { x: 1, y: 0 }, { x: -1, y: 0 },
+            { x: 0, y: 1 }, { x: 0, y: -1 }
+        ];
+        let changeCooldown = 0;
         function step() {
-            // Aggiorna direzione randomica
-            if (Math.random() < 0.02) {
-                const dirs = [
-                    { x: 1, y: 0 }, { x: -1, y: 0 },
-                    { x: 0, y: 1 }, { x: 0, y: -1 }
-                ];
-                direction = dirs[Math.floor(Math.random() * dirs.length)];
+            // Aggiorna direzione randomica con cooldown
+            if (changeCooldown > 0) changeCooldown--;
+            else if (Math.random() < 0.004) {
+                const newDir = dirs.filter(dir => dir.x !== direction.x && dir.y !== direction.y);
+                direction = newDir[Math.floor(Math.random() * newDir.length)];
+                changeCooldown = 30; // pausa di 60 frame prima del prossimo cambio
             }
 
             // Movimento fluido in pixel
             headPos.x += direction.x * speed;
             headPos.y += direction.y * speed;
 
-            // Collisione con i bordi → cambio direzione ortogonale
-            if (headPos.x <= 0 || headPos.x >= canvas.width) {
-                // se stava andando in orizzontale, scegli su o giù
-                direction = Math.random() > 0.5 ? { x: 0, y: 1 } : { x: 0, y: -1 };
-                headPos.x = Math.max(0, Math.min(canvas.width, headPos.x));
+            // Collisione con i bordi → cambio direzione ortogonale senza clamp drastico
+            if (headPos.x <= margin || headPos.x >= canvas.width - margin) {
+                if (direction.x !== 0) {
+                    direction = Math.random() > 0.5 ? { x: 0, y: 1 } : { x: 0, y: -1 };
+                    changeCooldown = 30;
+                }
+                headPos.x = Math.min(Math.max(headPos.x, margin), canvas.width - margin);
             }
 
-            if (headPos.y <= 0 || headPos.y >= canvas.height) {
-                // se stava andando in verticale, scegli destra o sinistra
-                direction = Math.random() > 0.5 ? { x: 1, y: 0 } : { x: -1, y: 0 };
-                headPos.y = Math.max(0, Math.min(canvas.height, headPos.y));
+            if (headPos.y <= margin || headPos.y >= canvas.height - margin) {
+                if (direction.y !== 0) {
+                    direction = Math.random() > 0.5 ? { x: 1, y: 0 } : { x: -1, y: 0 };
+                    changeCooldown = 30;
+                }
+                headPos.y = Math.min(Math.max(headPos.y, margin), canvas.height - margin);
             }
-
-
 
             snake.unshift({ ...headPos });
             if (snake.length > length) snake.pop();
@@ -54,12 +60,11 @@ function SnakeBackground({ speed = 3, length = 100, color_1 = "#000", color_2 = 
                 ctx.beginPath();
                 ctx.moveTo(snake[0].x, snake[0].y);
 
-                // Usa quadraticCurveTo per la coda
                 for (let i = 1; i < snake.length - 2; i++) {
                     const dx = snake[i + 1].x - snake[i].x;
                     const dy = snake[i + 1].y - snake[i].y;
 
-                    // Se la distanza è troppo grande (es. > metà del canvas), salta questo segmento
+                    // Salta segmenti troppo distanti per evitare loop strani
                     if (Math.abs(dx) > canvas.width / 2 || Math.abs(dy) > canvas.height / 2) continue;
 
                     const xc = (snake[i].x + snake[i + 1].x) / 2;
@@ -67,20 +72,16 @@ function SnakeBackground({ speed = 3, length = 100, color_1 = "#000", color_2 = 
                     ctx.quadraticCurveTo(snake[i].x, snake[i].y, xc, yc);
                 }
 
-
                 const last = snake.length - 1;
                 ctx.quadraticCurveTo(snake[last - 1].x, snake[last - 1].y, snake[last].x, snake[last].y);
 
-                // Gradiente lungo la coda
-                const grad = ctx.createLinearGradient(
-                    snake[0].x, snake[0].y,
-                    snake[snake.length - 1].x, snake[snake.length - 1].y
-                );
+                // Gradiente sopra
+                const grad = ctx.createLinearGradient(snake[0].x, snake[0].y, snake[last].x, snake[last].y);
                 grad.addColorStop(0, color_1);
                 grad.addColorStop(1, color_2);
 
                 ctx.strokeStyle = grad;
-                ctx.lineWidth = 5;
+                ctx.lineWidth = 10;
                 ctx.lineJoin = "round";
                 ctx.lineCap = "round";
                 ctx.stroke();
