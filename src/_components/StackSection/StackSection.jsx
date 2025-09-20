@@ -29,7 +29,7 @@ function StackSection() {
 
     return (
         <div className='md:w-2/3 mx-auto py-6 px-6 md:px-20'>
-            <BigXL text={"Trasforma il pensiero in realtà con"} className={"text-center text-amber-400 font-semibold"} />
+            <BigXL text={"Trasformiamo la tua idea in realtà con"} className={"text-center text-amber-400 font-semibold"} />
             <BigXL className="text-center text-cyan-400 font-semibold" text={word} />
             <div className='grid grid-cols-5 md:grid-cols-10 items-center justify-items-center mt-6 md:mt-18'>
                 {tools && tools.map((t, i) => (

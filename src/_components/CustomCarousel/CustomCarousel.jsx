@@ -1,177 +1,186 @@
 "use client";
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
 
-import Medium from "../Text/Medium/Medium";
-import Big from "../Text/Big/Big";
+// I tuoi componenti tipografici
 import BigXL from "../Text/BigXL/BigXL";
-
-gsap.registerPlugin(ScrollTrigger);
+import Big from "../Text/Big/Big";
+import Medium from "../Text/Medium/Medium";
 
 const steps = [
     {
-        title: "Noi ti ascoltiamo",
+        title: "Ti ascoltiamo",
+        subtitle: "Diamo forma alla tua idea partendo dai tuoi obiettivi e dalle tue necessità.",
         descriptions: [
-            "Raccontaci cosa vuoi creare",
-            "Mostraci cosa hai in mente di grandioso",
-            "Dicci dove vuoi arrivare",
-            "Illustraci il tuo obiettivo",
+            ""
         ],
+        image: "/ideas-flow.svg",
+        altText: "Ideas Flow",
         bg: "bg-slate-100",
+        cta: "... così parte il nostro percorso insieme",
     },
     {
         title: "Ti supportiamo",
+        subtitle: "costruendo fondamenta solide per la tua idea.",
         descriptions: [
-            "Studiamo insieme il contesto",
-            "Definiamo le esigenze",
-            "Costruiamo un piano di lavoro",
-            "Gettiamo insieme basi solide",
+            "",
         ],
+        image: "/building-blocks.svg",
+        altText: "Building Blocks",
         bg: "bg-amber-100",
+        cta: "Ecco cosa succede dopo ...",
     },
     {
         title: "Ti accompagniamo",
+        subtitle: "dando forma concreta alla tua visione.",
         descriptions: [
-            "Disegniamo la tua idea",
-            "La progettiamo con stile e funzionalità",
-            "La sviluppiamo",
-            "Le diamo vita",
+            "",
         ],
+        image: "/sharing-knowledge.svg",
+        altText: "Sharing Knowledge",
         bg: "bg-rose-200",
+        cta: "... e poi",
     },
     {
         title: "Ti guidiamo",
+        subtitle: "nella crescita e nel miglioramento continuo.",
         descriptions: [
-            "Ti aiutiamo a ottimizzare il tuo prodotto",
-            "Analizziamo i risultati",
-            "Miglioriamo l'esperienza",
-            "Ti aiutiamo a crescere",
+            "",
         ],
+        image: "/team-collaboration.svg",
+        altText: "Team Collaboration",
         bg: "bg-red-300",
+        cta: "Ma questo è solo l’inizio ...",
     },
 ];
 
 function CustomCarousel() {
     const containerRef = useRef(null);
-    const sectionsRef = useRef([]);
-    const progressRef = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start start", "end end"],
+    });
 
-    useEffect(() => {
-        const fixedEl = document.querySelector(".progress-bar-container");
-
-        // Animazioni per ogni sezione
-        sectionsRef.current.forEach((el, i) => {
-            if (!el) return;
-
-            // Pin fullscreen della sezione
-            ScrollTrigger.create({
-                trigger: el,
-                start: "top top",
-                end: "+=100%",
-                pin: true,
-                pinSpacing: i === steps.length - 1, // solo l'ultima lascia spazio per scroll finale
-            });
-
-            // Animazione card
-            gsap.fromTo(
-                el.querySelector(".card-anim"),
-                { autoAlpha: 0, y: 50 },
-                {
-                    autoAlpha: 1,
-                    y: 0,
-                    duration: 1,
-                    scrollTrigger: {
-                        trigger: el,
-                        start: "top 90%",
-                        toggleActions: "play none none reverse",
-                    },
-                }
-            );
-        });
-
-        ScrollTrigger.create({
-            trigger: containerRef.current,
-            start: "top top",
-            end: "bottom bottom",
-            onEnter: () => gsap.to(fixedEl, { autoAlpha: 1, duration: 0.3 }),
-            onLeave: () => gsap.to(fixedEl, { autoAlpha: 0, duration: 0.3 }),
-            onEnterBack: () => gsap.to(fixedEl, { autoAlpha: 1, duration: 0.3 }),
-            onLeaveBack: () => gsap.to(fixedEl, { autoAlpha: 0, duration: 0.3 }),
-        });
-
-        // Barra di progresso legata solo al container
-        gsap.fromTo(
-            progressRef.current,
-            {
-                width: "0%",
-            },
-            {
-                width: "100%",
-                ease: "none",
-                scrollTrigger: {
-                    trigger: containerRef.current,
-                    start: "top top",
-                    end: "bottom bottom",
-                    scrub: true,
-                },
-            }
-        );
-
-        return () => {
-            ScrollTrigger.getAll().forEach((t) => t.kill());
-            gsap.killTweensOf("*");
-        };
-    }, []);
+    const progressWidth = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
     return (
-        <div ref={containerRef} className="relative w-full scrollbar-hide">
-            {/* Progress bar con indicatori */}
-            <div className="opacity-0 fixed top-10 left-3/12 h-2 w-1/2 bg-gray-200 z-50 progress-bar-container">
-                <div ref={progressRef} className="absolute top-0 left-0 w-0 h-2 bg-linear-to-r from-cyan-600/80 to-amber-500" />
-                {steps.map((_, i) => (
-                    <div
-                        key={i}
-                        className="absolute top-[-4px] -translate-x-1/2 w-4 h-4 rounded-full border-2 border-gray-400 bg-white dots"
-                        style={{ left: `${(i / (steps.length)) * 100}%` }}
-                    />
-                ))}
-                <div className="absolute top-[-4px] -translate-x-1/2 w-4 h-4 rounded-full border-2 border-gray-400 bg-white dots"
-                    style={{ left: "100%" }} />
+        <div
+            ref={containerRef}
+            className="relative w-full bg-gradient-to-b from-gray-50 via-gray-100 to-white"
+        >
+            {/* Progress bar sticky */}
+            <div className="sticky top-0 z-40 w-full h-2 bg-gray-200">
+                <motion.div
+                    style={{ width: progressWidth }}
+                    className="h-2 bg-gradient-to-r from-cyan-600/80 to-amber-500"
+                />
             </div>
 
-            {/* Sezioni */}
+            {/* Sections */}
             {steps.map((step, i) => (
                 <section
                     key={i}
-                    ref={(el) => (sectionsRef.current[i] = el)}
-                    className={`h-screen w-full flex items-center justify-center ${step.bg}`}
+                    className={`${step.bg} relative min-h-screen flex flex-col md:flex-row items-center justify-center px-6 md:px-20 max-w-7xl mx-auto my-8 md:my-12`}
                 >
-                    <div className="card-anim">
-                        <Card className="shadow-xl rounded-2xl">
-                            <CardHeader>
-                                <CardTitle className="text-3xl font-bold text-center">
-                                    {step.title}
-                                </CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                                {step.descriptions.map((description, i) => (
-                                    <Medium className="text-lg text-center text-gray-700" text={description} key={i} />
-                                ))}
-                            </CardContent>
-                        </Card>
+                    {/* Numero step */}
+                    <div className="hidden md:block absolute top-1/2 left-5 transform -translate-y-1/2 text-9xl font-bold text-transparent [text-stroke:2px_black] select-none pointer-events-none">
+                        {(i + 1).toString().padStart(2, "0")}
+                    </div>
 
+                    {/* Immagine desktop */}
+                    <div
+                        className={`w-full md:w-1/3 flex justify-center ${i % 2 === 0 ? "order-1" : "order-2"
+                            }`}
+                    >
+                        <motion.div
+                            initial={{ opacity: 0, x: i % 2 === 0 ? -50 : 50 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.8 }}
+                            viewport={{ once: true, amount: 0.4 }}
+                        >
+                            <Image
+                                src={step.image}
+                                alt={step.altText}
+                                width={400}
+                                height={400}
+                                className="hidden md:block max-h-[400px] object-contain"
+                            />
+                        </motion.div>
+                    </div>
+
+                    {/* Contenuto */}
+                    <div
+                        className={`w-full md:w-2/3 flex flex-col gap-4 text-center md:text-left ${i % 2 === 0 ? "md:order-2 md:pl-16" : "md:order-1 md:pr-16"
+                            }`}
+                    >
+                        {/* Numero mobile */}
+                        <div className="text-4xl font-bold text-amber-600/70 mb-2">
+                            {(i + 1).toString().padStart(2, "0")}
+                        </div>
+
+                        {/* Titolo */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.7 }}
+                            viewport={{ once: true }}
+                        >
+                            <BigXL text={step.title} className="pb-2" />
+                        </motion.div>
+
+                        {/* Subtitle */}
+                        {step.subtitle && (
+                            <motion.div
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.7, delay: 0.1 }}
+                                viewport={{ once: true }}
+                            >
+                                <Big text={step.subtitle} className="text-gray-700" />
+                            </motion.div>
+                        )}
+
+                        {/* Immagine mobile */}
+                        <div className="md:hidden flex justify-center my-4">
+                            <Image
+                                src={step.image}
+                                alt={step.altText}
+                                width={300}
+                                height={300}
+                                className="max-h-[200px] object-contain"
+                            />
+                        </div>
+
+                        {/* Descrizioni */}
+                        {/* <ul className="space-y-2">
+                            {step.descriptions.map((desc, j) => (
+                                <motion.li
+                                    key={j}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.6, delay: 0.2 + j * 0.1 }}
+                                    viewport={{ once: true }}
+                                >
+                                    <Medium text={`• ${desc}`} className="text-gray-800" />
+                                </motion.li>
+                            ))}
+                        </ul> */}
+
+                        {/* CTA */}
+                        {step.cta && (
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                transition={{ duration: 0.8, delay: 0.4 }}
+                                viewport={{ once: true }}
+                            >
+                                <Medium text={step.cta} className="italic text-gray-600 mt-6" />
+                            </motion.div>
+                        )}
                     </div>
                 </section>
             ))}
-
-            <section className="min-h-screen w-full flex items-center justify-center bg-white">
-                <div className="max-w-2xl text-center p-8">
-                    <BigXL text={"Collaborare con noi significa "} className="text-center" />
-                    <BigXL text={"scegliere di essere supportati, sempre!"} className="text-center" />
-                </div>
-            </section>
         </div>
     );
 }

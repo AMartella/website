@@ -8,21 +8,20 @@ import SnakeBackground from "@/_components/StackSection/SnakeBackground";
 import ImageComparison from "@/_components/ImageComparison/ImageComparison";
 import Banner from "@/_components/Banner/Banner";
 import BlackHole from "@/_components/HeroSection/Blackhole";
+import ScrollToTop from "@/_components/ScrollToTop/ScrollToTop";
 
 export default function Home() {
   return (
     <>
-      <TopBanner />
-      <header>
-        <Header />
-      </header>
-      <section id="hero-section">
-        <BlackHole />
-        <HeroSection />
+      <section id="blackhole-section">
+        <BlackHole targetSectionId={"custom-carousel"} />
       </section>
       <section id="custom-carousel">
         <Banner />
         <CustomCarousel />
+      </section>
+      <section id="works" className="py-5">
+        <div>I nostri lavori</div>
       </section>
       <section id="stack-section" className="relative [background-image:radial-gradient(circle,#0000003b_1px,#f1f5f9_1px)] [background-size:20px_20px] py-5 md:py-18 z-10">
         <SnakeBackground
@@ -40,12 +39,7 @@ export default function Home() {
           initalDirection={{ x: -1, y: 0 }} />
         <StackSection />
       </section>
-      <section id="image-comparison-section" className="py-5">
-        <ImageComparison />
-      </section>
-      <footer className="w-10/12 mx-auto my-6 md:my-10">
-        <Footer />
-      </footer>
+      <ScrollToTop />
     </>
   );
 }

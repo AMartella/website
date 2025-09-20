@@ -43,20 +43,16 @@ function HeroSection() {
                 </div>
                 <div className='py-10 md:py-16'>
                     <div className='relative animate-fade-in-slow'>
-                        <div className='md:flex items-center'>
-                            <div className='md:max-w-2/5 md:pr-6'>
-                                <Big text="Sartoria Digitale" className={"font-medium text-white md:pb-10 animate-fade-in-slow"} />
+                        <div className='md:flex items-center justify-center'>
+                            <div className='md:max-w-full text-center'>
+                                <Big text="Siamo una sartoria digitale" className={"font-medium text-white md:pb-10 animate-fade-in-slow"} />
                                 <Medium text="Progettiamo e sviluppiamo software su misura che crescono con la tua azienda, sicuri e scalabili fin dal primo rilascio" className={"font-normal text-white animate-fade-in-fast"} />
-                                <Button className={"my-6 p-6 cursor-pointer bg-amber-400 text-white hover:bg-white hover:text-amber-400"}>
+                                {/* <Button className={"my-6 p-6 cursor-pointer bg-amber-400 text-white hover:bg-white hover:text-amber-400"}>
                                     <Medium text="SCOPRI DI PIÙ" link="/about" className={"font-bold"} />
                                     <ArrowRight className='w-8 h-8' />
-                                </Button>
-
-                            </div>
-                            <div className='w-full md:w-1/3 mx-auto my-6 md:ml-auto md:mr-30'>
-                                {/* <BlackHole /> */}
-                                {/* <Image src="/img-1.png" alt="hero" width={1000} height={1000}
-                                    className='rounded-md shadow-amber-700 shadow-lg opacity-85' /> */}
+                                </Button> */}
+                                <div className='hidden md:block md:w-full md:h-24'></div>
+                                <Big text="I nostri servizi includono" className={"font-medium text-white md:pb-10 animate-fade-in-slow"} />
                             </div>
                         </div>
                     </div>
@@ -75,7 +71,7 @@ function HeroSection() {
                         </div>
                     </div>
                 </div>
-            </div >
+            </div>
         </>
     )
 }
