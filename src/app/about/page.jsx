@@ -12,7 +12,7 @@ function page() {
             </section>
             <section id="vision-section" className="py-5">
                 <div>La nostra visione</div>
-                {/* <DemingCycleStoryTelling /> */}
+                {/* <DemingCycleStoryTelling/> */}
             </section>
             <section id="team-section" className="py-5">
                 <div>Il nostro team</div>
