@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 
-export default function BlackHole({ className = "", targetSectionId }) {
+export default function BlackHole({ className = "", targetSectionId, onFinish }) {
     const containerRef = useRef(null);
     const canvasRef = useRef(null);
     const centerHoverRef = useRef(null);
@@ -15,16 +15,6 @@ export default function BlackHole({ className = "", targetSectionId }) {
         startTime: 0,
         currentTime: 0
     });
-
-    useEffect(() => {
-        document.body.style.overflow = 'hidden';
-
-        const timeout = setTimeout(() => {
-            document.body.style.overflow = '';
-        }, 5000);
-
-        return () => clearTimeout(timeout);
-    }, []);
 
     useEffect(() => {
         if (!containerRef.current || !centerHoverRef.current) return;
@@ -86,7 +76,7 @@ export default function BlackHole({ className = "", targetSectionId }) {
                 this.startRotation = (Math.floor(Math.random() * 360) + 1) * Math.PI / 180;
                 this.id = starsRef.current.length;
                 this.collapseBonus = Math.max(this.orbital - (maxorbit * 0.7), 0);
-                this.color = `rgba(255,255,255,${1 - (this.orbital / 255)})`;
+                this.color = `rgba(0,191,255,${1 - (this.orbital / 255)})`;
                 this.hoverPos = centery + (maxorbit / 2) + this.collapseBonus;
                 this.expansePos = centery + (this.id % 100) * -10 + (Math.floor(Math.random() * 20) + 1);
                 this.prevR = this.startRotation;
@@ -136,42 +126,17 @@ export default function BlackHole({ className = "", targetSectionId }) {
             }
         }
 
-        // Funzione scroll personalizzato con easing
-        function scrollToSection(target) {
-            if (!target) return;
-            const startY = window.scrollY;
-            const endY = target.getBoundingClientRect().top + startY;
-            const duration = 2000; // durata in ms
-            let startTime = null;
-
-            function easeInOutCubic(t) {
-                return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-            }
-
-            function animate(time) {
-                if (!startTime) startTime = time;
-                const elapsed = time - startTime;
-                const progress = Math.min(elapsed / duration, 1);
-                const eased = easeInOutCubic(progress);
-                window.scrollTo(0, startY + (endY - startY) * eased);
-                if (progress < 1) requestAnimationFrame(animate);
-            }
-
-            requestAnimationFrame(animate);
-        }
-
         // Event handlers
-        const handleClick = () => {
+        const handleClick = (e) => {
             stateRef.current.collapse = false;
             stateRef.current.expanse = true;
             stateRef.current.returning = false;
             centerHover.classList.add('opacity-0', 'pointer-events-none');
 
-            // scroll lento dopo 5 secondi
+            // rimozione dopo 2.0 secondi
             setTimeout(() => {
-                const target = document.getElementById(targetSectionId);
-                scrollToSection(target);
-            }, 2500);
+                if (onFinish) onFinish();
+            }, 2200);
 
             setTimeout(() => {
                 stateRef.current.expanse = false;
@@ -188,7 +153,9 @@ export default function BlackHole({ className = "", targetSectionId }) {
 
         centerHover.addEventListener('click', handleClick);
         centerHover.addEventListener('mouseover', handleMouseOver);
+        centerHover.addEventListener('focusin', handleMouseOver);
         centerHover.addEventListener('mouseout', handleMouseOut);
+        centerHover.addEventListener('focusout', handleMouseOut);
 
         // Animation loop
         function loop() {
@@ -222,10 +189,10 @@ export default function BlackHole({ className = "", targetSectionId }) {
     }, [targetSectionId]);
 
     return (
-        <div ref={containerRef} className={`h-screen w-full relative flex overflow-hidden ${className}`}>
+        <div ref={containerRef} className={`h-screen w-full relative flex overflow-hidden blackhole ${className}`}>
             <div ref={centerHoverRef} className="w-64 h-64 bg-transparent rounded-full absolute left-1/2 top-1/2 -mt-32 -ml-32 z-20 cursor-pointer flex items-center justify-center transition-all duration-500 group hover:[&>span]:text-neutral-300 hover:[&>span]:before:bg-neutral-300 hover:[&>span]:after:bg-neutral-300">
-                <span className="text-neutral-600 text-lg relative transition-all duration-500 before:content-[''] before:inline-block before:h-px before:w-4 before:mr-3 before:mb-1 before:bg-neutral-600 before:transition-all before:duration-500 after:content-[''] after:inline-block after:h-px after:w-4 after:ml-3 after:mb-1 after:bg-neutral-600 after:transition-all after:duration-500 font-serif">
-                    INIZIA DA QUI
+                <span className="animate-pulse-smooth text-[#00bfff] text-lg relative transition-all duration-500 before:content-[''] before:inline-block before:h-px before:w-4 before:mr-3 before:mb-1 before:bg-neutral-600 before:transition-all before:duration-500 after:content-[''] after:inline-block after:h-px after:w-4 after:ml-3 after:mb-1 after:bg-neutral-600 after:transition-all after:duration-500 font-serif">
+                    <button type='button' className='cursor-pointer'>INIZIA DA QUI</button>
                 </span>
             </div>
         </div>

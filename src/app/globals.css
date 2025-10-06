@@ -5,10 +5,35 @@
 
 @theme inline {
   --animate-fade-in: fade-in 0.4s both;
+  --animate-fade-in-smooth: fade-in-smooth 5s both;
   --animate-fade-in-header: fade-in-header 0.4s both;
   --animate-fade-in-word: fade-in-word 0.2s both;
   --animate-run: run 3s infinite both ease-out;
   --animate-run-header: run-header 8s infinite both ease-out;
+  --animate-pulse-smooth: pulse-smooth 5s infinite ease-in-out;
+  --animate-fade-out: fade-out 1s both;
+  --animate-to-top: to-top 2s ease-out;
+  --animate-background-color-transition: background-color-transition 4s ease-out;
+
+  @keyframes background-color-transition {
+    0% {
+      background-color: #191919;
+    }
+
+    100% {
+      background-color: #0085a8;
+    }
+  }
+
+  @keyframes to-top {
+    0% {
+      transform: translateY(3%);
+    }
+
+    100% {
+      transform: translateY(0);
+    }
+  }
 
   @keyframes fade-in-word {
     0% {
@@ -26,7 +51,17 @@
     }
 
     100% {
-      opacity: 0.65;
+      opacity: 1;
+    }
+  }
+
+  @keyframes fade-in-smooth {
+    0% {
+      opacity: 0.8;
+    }
+
+    100% {
+      opacity: 1;
     }
   }
 
@@ -77,6 +112,20 @@
     100% {
       transform: translateY(110%);
       opacity: 0;
+    }
+  }
+
+  @keyframes pulse-smooth {
+
+    0%,
+    100% {
+      transform: scale(1);
+      opacity: 0.8;
+    }
+
+    50% {
+      transform: scale(1.1);
+      opacity: 1;
     }
   }
 

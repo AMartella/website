@@ -1,20 +1,19 @@
-import TopBanner from "@/_components/TopBanner/TopBanner";
-import Header from "@/_components/Header/Header";
-import HeroSection from "@/_components/HeroSection/HeroSection";
-import Footer from "@/_components/Footer/Footer";
 import CustomCarousel from "@/_components/CustomCarousel/CustomCarousel";
 import StackSection from "@/_components/StackSection/StackSection";
 import SnakeBackground from "@/_components/StackSection/SnakeBackground";
-import ImageComparison from "@/_components/ImageComparison/ImageComparison";
 import Banner from "@/_components/Banner/Banner";
-import BlackHole from "@/_components/HeroSection/Blackhole";
 import ScrollToTop from "@/_components/ScrollToTop/ScrollToTop";
+import HeroSection from "@/_components/HeroSection/HeroSection";
+import BigXL from "@/_components/Text/BigXL/BigXL";
+import Big from "@/_components/Text/Big/Big";
+import Feedback from "@/_components/Feedback/Feedback";
 
 export default function Home() {
+
   return (
     <>
-      <section id="blackhole-section">
-        <BlackHole targetSectionId={"custom-carousel"} />
+      <section id="hero-section">
+        <HeroSection />
       </section>
       <section id="custom-carousel">
         <Banner />
@@ -38,6 +37,13 @@ export default function Home() {
           position={"center-center"}
           initalDirection={{ x: -1, y: 0 }} />
         <StackSection />
+      </section>
+      <section id="feedback" className="py-5">
+        <div className="">
+          <BigXL text="'La migliore pubblicità è quella che fanno i clienti soddisfatti'" className={"text-center"} />
+          <Big text="Philip Kotler" className={"text-center"} />
+        </div>
+        <Feedback />
       </section>
       <ScrollToTop />
     </>

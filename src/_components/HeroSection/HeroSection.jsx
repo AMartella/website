@@ -9,6 +9,7 @@ import Image from 'next/image'
 import Card from '../Card/Card'
 import { Droplet } from 'lucide-react'
 import BlackHole from './Blackhole'
+import AnimatedCounter from '../AnimatedCounter/AnimatedCounter'
 
 function HeroSection() {
     return (
@@ -47,27 +48,30 @@ function HeroSection() {
                             <div className='md:max-w-full text-center'>
                                 <Big text="Siamo una sartoria digitale" className={"font-medium text-white md:pb-10 animate-fade-in-slow"} />
                                 <Medium text="Progettiamo e sviluppiamo software su misura che crescono con la tua azienda, sicuri e scalabili fin dal primo rilascio" className={"font-normal text-white animate-fade-in-fast"} />
-                                {/* <Button className={"my-6 p-6 cursor-pointer bg-amber-400 text-white hover:bg-white hover:text-amber-400"}>
-                                    <Medium text="SCOPRI DI PIÙ" link="/about" className={"font-bold"} />
+                                <div className='md:w-full h-8 md:h-16'></div>
+                                <Button className={"my-6 p-6 cursor-pointer bg-amber-400 text-white hover:bg-white hover:text-amber-400"}>
+                                    <Medium text="CONTATTACI" link="/about" className={"font-bold"} />
                                     <ArrowRight className='w-8 h-8' />
-                                </Button> */}
-                                <div className='hidden md:block md:w-full md:h-24'></div>
-                                <Big text="I nostri servizi includono" className={"font-medium text-white md:pb-10 animate-fade-in-slow"} />
+                                </Button>
+                                <div className='md:w-full h-8 md:h-16'></div>
+                                <Big text="I nostri punti di forza" className={"font-medium text-white md:pb-10 animate-fade-in-slow"} />
                             </div>
                         </div>
                     </div>
-                    <div className='relative hidden md:block animate-fade-in-slow'>
-                        <div className='flex justify-center gap-12 mt-10 py-12'>
-                            <Card text={"AI Automation"} bgColor={"bg-cyan-900/50 backdrop-blur-[1px]"}
-                                icon={"/ai.svg"} link="/services/ai" />
-                            <Card text={"Sviluppo Web"} bgColor={"bg-cyan-900/50 backdrop-blur-[1px]"}
-                                icon={"/dev.svg"} link="/services/development" />
-                            <Card text={"Grafica e Design"} bgColor={"bg-cyan-900/50 backdrop-blur-[1px]"}
-                                icon={"/ai.svg"} link="/services/design" />
-                            <Card text={"Mobile App"} bgColor={"bg-cyan-900/50 backdrop-blur-[1px]"}
-                                icon={"/ai.svg"} link="/services/mobile" />
-                            <Card text={"Data Solution"} bgColor={"bg-cyan-900/50 backdrop-blur-[1px]"}
-                                icon={"/data-solution.svg"} link="/services/data-solution" />
+                    <div className='relative animate-fade-in-slow'>
+                        <div className='flex justify-around md:w-2/4 mx-auto'>
+                            <div className='flex flex-col items-center'>
+                                <Medium text="Clienti soddisfatti" className={"text-white md:pb-10"} />
+                                <AnimatedCounter prefix={"+"} targetNumber={20} duration={5500} className={"text-white md:pb-10"} />
+                            </div>
+                            <div className='flex flex-col items-center'>
+                                <Medium text="Progetti consegnati" className={"text-white md:pb-10"} />
+                                <AnimatedCounter prefix={"+"} targetNumber={50} duration={7000} className={"text-white md:pb-10"} />
+                            </div>
+                            <div className='flex flex-col items-center'>
+                                <Medium text="Anni di esperienza" className={"text-white md:pb-10"} />
+                                <AnimatedCounter prefix={"+"} targetNumber={10} duration={4500} className={"text-white md:pb-10"} />
+                            </div>
                         </div>
                     </div>
                 </div>

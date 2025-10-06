@@ -7,9 +7,6 @@ import React from 'react'
 function page() {
     return (
         <>
-            <section id="hero-section">
-                <HeroSection />
-            </section>
             <section id="vision-section" className="py-5">
                 <div>La nostra visione</div>
                 {/* <DemingCycleStoryTelling/> */}

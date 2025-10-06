@@ -2,6 +2,7 @@ import React from 'react'
 import Small from '../Text/Small/Small'
 import { Linkedin, Mail } from 'lucide-react'
 import Medium from '../Text/Medium/Medium'
+import Link from 'next/link'
 
 function TopBanner() {
     return (
@@ -20,8 +21,8 @@ function TopBanner() {
                 </div>
             </div>
             <div className='hidden md:flex gap-2 md:gap-4'>
-                <Mail className='w-8 h-8' />
-                <Linkedin className='w-8 h-8 pb-[1px]' />
+                <Link href="#" target="_blank"><Mail className='w-8 h-8' /></Link>
+                <Link href="#" target="_blank"><Linkedin className='w-8 h-8 pb-[1px]' /></Link>
             </div>
         </div>
     )
