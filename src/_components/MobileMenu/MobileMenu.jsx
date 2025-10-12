@@ -16,6 +16,7 @@ import Big from '../Text/Big/Big'
 import Medium from '../Text/Medium/Medium'
 
 function MobileMenu() {
+
     return (
         <Sheet>
             <SheetTrigger><Menu className='w-8 h-8' /></SheetTrigger>
@@ -30,9 +31,9 @@ function MobileMenu() {
                     <hr className='mt-2 mx-1' />
                 </SheetHeader>
                 <nav className="flex flex-col gap-6 px-6 py-3 text-lg font-medium text-cyan-600">
-                    <Big text="Home" link={"/"} />
-                    <Big text="Chi siamo" link={"/about"} />
-                    <Big text="Servizi" link={"/services"} />
+                    <SheetClose asChild><Big text="Home" link={"/"} /></SheetClose>
+                    <SheetClose asChild><Big text="Chi siamo" link={"/about"} /></SheetClose>
+                    <SheetClose asChild><Big text="Servizi" link={"/services"} /></SheetClose>
                 </nav>
                 <SheetFooter>
                     <div className='flex gap-2'>
