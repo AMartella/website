@@ -22,7 +22,7 @@ function MobileMenu() {
             <SheetContent className="w-[85vw] bg-white shadow-lg gap-0 [&>button:first-of-type]:hidden">
                 <SheetHeader>
                     <div className='flex justify-between items-center'>
-                        <SheetTitle><Logo className={"w-45 h-15"} /></SheetTitle>
+                        <SheetTitle><Logo className={"w-45 h-15"} path={"/SIS_Logo.png"} /></SheetTitle>
                         <SheetClose>
                             <XIcon className='w-7 h-7 text-amber-600' />
                         </SheetClose>

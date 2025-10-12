@@ -2,10 +2,10 @@ import { cn } from '@/lib/utils'
 import Image from 'next/image'
 import React from 'react'
 
-function Logo({ className }) {
+function Logo({ className, path }) {
     return (
         <Image
-            src="/SIS_Logo.png"
+            src={path}
             alt="Logo"
             width={200}
             height={200}

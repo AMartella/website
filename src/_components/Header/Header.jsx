@@ -16,10 +16,10 @@ function Header() {
     useEffect(() => {
         const handleScroll = () => {
             if (isMobile) {
-                setHeaderFixed(window.scrollY > 5200);
+                setHeaderFixed(window.scrollY > 4000);
                 return;
             }
-            setHeaderFixed(window.scrollY > 6700);
+            setHeaderFixed(window.scrollY > 5500);
         };
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
@@ -35,7 +35,7 @@ function Header() {
                 </span>
             </div>}
             <div className={cn('flex justify-between items-center py-2', !headerFixed && 'px-4 md:px-12')}>
-                <Logo />
+                <Logo path={"/SIS_Logo.png"} />
                 <div className='hidden md:flex items-center gap-5 font-bold md:text-lg'>
                     <Medium text="Home" link={"/"} />
                     <Medium text="Chi siamo" link={"/about"} />

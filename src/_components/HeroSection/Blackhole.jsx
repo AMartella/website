@@ -1,6 +1,8 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import Logo from '../Logo/Logo';
+import Medium from '../Text/Medium/Medium';
 
 export default function BlackHole({ className = "", targetSectionId, onFinish }) {
     const containerRef = useRef(null);
@@ -191,8 +193,11 @@ export default function BlackHole({ className = "", targetSectionId, onFinish })
     return (
         <div ref={containerRef} className={`h-screen w-full relative flex overflow-hidden blackhole ${className}`}>
             <div ref={centerHoverRef} className="w-64 h-64 bg-transparent rounded-full absolute left-1/2 top-1/2 -mt-32 -ml-32 z-20 cursor-pointer flex items-center justify-center transition-all duration-500 group hover:[&>span]:text-neutral-300 hover:[&>span]:before:bg-neutral-300 hover:[&>span]:after:bg-neutral-300">
-                <span className="animate-pulse-smooth text-[#00bfff] text-lg relative transition-all duration-500 before:content-[''] before:inline-block before:h-px before:w-4 before:mr-3 before:mb-1 before:bg-neutral-600 before:transition-all before:duration-500 after:content-[''] after:inline-block after:h-px after:w-4 after:ml-3 after:mb-1 after:bg-neutral-600 after:transition-all after:duration-500 font-serif">
-                    <button type='button' className='cursor-pointer'>INIZIA DA QUI</button>
+                <span className="animate-pulse-smooth text-[#00bfff] text-lg relative transition-all duration-500 font-serif">
+                    <button type='button' className='cursor-pointer'>
+                        <Logo path={"/LogoBrand.png"} className={'w-32 h-32 md:w-32 md:h-32'} />
+                        <Medium text={"INIZIA DA QUI"} />
+                    </button>
                 </span>
             </div>
         </div>
