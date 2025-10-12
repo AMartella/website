@@ -12,7 +12,7 @@
   --animate-run-header: run-header 8s infinite both ease-out;
   --animate-pulse-smooth: pulse-smooth 5s infinite ease-in-out;
   --animate-fade-out: fade-out 1s both;
-  --animate-to-top: to-top 2s ease-out;
+  --animate-zoom-out: zoom 2s ease-out;
   --animate-background-color-transition: background-color-transition 4s ease-out;
 
   @keyframes background-color-transition {
@@ -25,14 +25,12 @@
     }
   }
 
-  @keyframes to-top {
+  @keyframes zoom {
     0% {
-      transform: translateY(2%);
-      transform: scale(0.9);
+      transform: scale(0.98);
     }
 
     100% {
-      transform: translateY(0);
       transform: scale(1);
     }
   }

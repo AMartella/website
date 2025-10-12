@@ -39,7 +39,7 @@ export default function RootLayout({ children }) {
               setShowBlackHole(false);
             }} />
           ) : (
-            <div className={`${isFadingIn ? "animate-to-top" : ""}`}>
+            <div className={`${isFadingIn ? "animate-zoom-out" : ""}`}>
               <TopBanner />
               <header>
                 <Header />
