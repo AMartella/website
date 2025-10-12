@@ -26,7 +26,7 @@ function ScrollToTop() {
     return (
         <button
             onClick={scrollToTop}
-            className="z-99 fixed cursor-pointer bottom-6 right-6 p-4 rounded-full bg-amber-400 text-white shadow-lg hover:bg-cyan-400 transition"
+            className="z-99 fixed cursor-pointer bottom-6 right-6 p-4 rounded-full bg-amber-400 text-white shadow-lg hover:bg-cyan-400 hover:scale-105 transition"
         >
             <ArrowUp className="w-6 h-6" />
         </button>

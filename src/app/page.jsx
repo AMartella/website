@@ -7,6 +7,10 @@ import HeroSection from "@/_components/HeroSection/HeroSection";
 import BigXL from "@/_components/Text/BigXL/BigXL";
 import Big from "@/_components/Text/Big/Big";
 import Feedback from "@/_components/Feedback/Feedback";
+import { Button } from "@/components/ui/button";
+import Medium from "@/_components/Text/Medium/Medium";
+import { ArrowRight } from "lucide-react";
+import CTA from "@/_components/CTA/CTA";
 
 export default function Home() {
 
@@ -40,10 +44,13 @@ export default function Home() {
       </section>
       <section id="feedback" className="py-5">
         <div className="">
-          <BigXL text="'La migliore pubblicità è quella che fanno i clienti soddisfatti'" className={"text-center"} />
+          <BigXL text="La migliore pubblicità è quella che fanno i clienti soddisfatti" className={"text-center"} />
           <Big text="Philip Kotler" className={"text-center"} />
         </div>
         <Feedback />
+        <div className='md:max-w-full text-center'>
+          <CTA text={"CONTATTACI"} link="/about" />
+        </div>
       </section>
       <ScrollToTop />
     </>

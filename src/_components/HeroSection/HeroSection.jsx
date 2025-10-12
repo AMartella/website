@@ -10,6 +10,7 @@ import Card from '../Card/Card'
 import { Droplet } from 'lucide-react'
 import BlackHole from './Blackhole'
 import AnimatedCounter from '../AnimatedCounter/AnimatedCounter'
+import CTA from '../CTA/CTA'
 
 function HeroSection() {
     return (
@@ -49,28 +50,25 @@ function HeroSection() {
                                 <Big text="Siamo una sartoria digitale" className={"font-medium text-white md:pb-10 animate-fade-in-slow"} />
                                 <Medium text="Progettiamo e sviluppiamo software su misura che crescono con la tua azienda, sicuri e scalabili fin dal primo rilascio" className={"font-normal text-white animate-fade-in-fast"} />
                                 <div className='md:w-full h-8 md:h-16'></div>
-                                <Button className={"my-6 p-6 cursor-pointer bg-amber-400 text-white hover:bg-white hover:text-amber-400"}>
-                                    <Medium text="CONTATTACI" link="/about" className={"font-bold"} />
-                                    <ArrowRight className='w-8 h-8' />
-                                </Button>
+                                <CTA text={"CONTATTACI"} link="/about" />
                                 <div className='md:w-full h-8 md:h-16'></div>
                                 <Big text="I nostri punti di forza" className={"font-medium text-white md:pb-10 animate-fade-in-slow"} />
                             </div>
                         </div>
                     </div>
                     <div className='relative animate-fade-in-slow'>
-                        <div className='flex justify-around md:w-2/4 mx-auto'>
-                            <div className='flex flex-col items-center'>
+                        <div className='md:flex md:justify-around md:w-2/4 mx-auto block'>
+                            <div className='flex md:flex-col md:items-center items-baseline justify-evenly'>
                                 <Medium text="Clienti soddisfatti" className={"text-white md:pb-10"} />
-                                <AnimatedCounter prefix={"+"} targetNumber={20} duration={5500} className={"text-white md:pb-10"} />
+                                <AnimatedCounter suffix={"+"} targetNumber={20} duration={5500} className={"text-white md:pb-10"} />
                             </div>
-                            <div className='flex flex-col items-center'>
+                            <div className='flex md:flex-col md:items-center items-baseline justify-evenly'>
                                 <Medium text="Progetti consegnati" className={"text-white md:pb-10"} />
-                                <AnimatedCounter prefix={"+"} targetNumber={50} duration={7000} className={"text-white md:pb-10"} />
+                                <AnimatedCounter suffix={"+"} targetNumber={50} duration={7000} className={"text-white md:pb-10"} />
                             </div>
-                            <div className='flex flex-col items-center'>
+                            <div className='flex md:flex-col md:items-center items-baseline justify-evenly'>
                                 <Medium text="Anni di esperienza" className={"text-white md:pb-10"} />
-                                <AnimatedCounter prefix={"+"} targetNumber={10} duration={4500} className={"text-white md:pb-10"} />
+                                <AnimatedCounter suffix={"+"} targetNumber={10} duration={4500} className={"text-white md:pb-10"} />
                             </div>
                         </div>
                     </div>

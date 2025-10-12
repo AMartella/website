@@ -1,9 +1,7 @@
 'use client'
 
 import { useState, React } from 'react'
-import Medium from '../Text/Medium/Medium'
 import Image from 'next/image'
-import Big from '../Text/Big/Big';
 import BigXL from '../Text/BigXL/BigXL';
 
 const tools = [

@@ -136,7 +136,7 @@ export default function BlackHole({ className = "", targetSectionId, onFinish })
             // rimozione dopo 2.0 secondi
             setTimeout(() => {
                 if (onFinish) onFinish();
-            }, 2200);
+            }, 2100);
 
             setTimeout(() => {
                 stateRef.current.expanse = false;

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from "react";
+import Big from "../Text/Big/Big";
 
 export default function AnimatedCounter({ targetNumber, duration = 2000, ...props }) {
   const [count, setCount] = useState(0);
@@ -20,8 +21,6 @@ export default function AnimatedCounter({ targetNumber, duration = 2000, ...prop
   }, [targetNumber, duration]);
 
   return (
-    <div className={props.className}>
-      {props.prefix} {count}
-    </div>
+    <Big text={count} {...props} />
   );
 }
